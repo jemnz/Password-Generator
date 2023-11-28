@@ -97,14 +97,22 @@ function getPasswordOptions() {
     return getPasswordOptions();
   }
 
-  const Lowercase = confirm('Include lowercase characters?');
-  const Uppercase = confirm('Include uppercase characters?');
-  const Numeric = confirm('Include numeric characters?');
-  const Special = confirm('Include special characters?');
+  const addLowercase = confirm('Include lowercase characters?');
+  const addUppercase = confirm('Include uppercase characters?');
+  const addNumeric = confirm('Include numeric characters?');
+  const addSpecial = confirm('Include special characters?');
 
+  if (!addLowercase && !addUppercase && !addNumeric && !addSpecial) {
+    alert('At least one character type should be selected. Please try again.');
+    return getPasswordOptions();
+  }
 
   return {
     length: passwordLength
+    addLowercase,
+    addUppercase,
+    addNumeric,
+    addSpecial,
   };
 
 }
