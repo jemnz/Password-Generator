@@ -108,7 +108,7 @@ function getPasswordOptions() {
   }
 
   return {
-    length: passwordLength
+    length: passwordLength,
     addLowercase,
     addUppercase,
     addNumeric,
@@ -126,8 +126,44 @@ function getRandom(arr) {
 
 // Function to generate password with user input
 function generatePassword() {
+  const options = getPasswordOptions();
 
+  if (options) {
+    let characters = '';
+
+    if (options.addLowercase) {
+      for (let i = 0; i < lowerCasedCharacters.length; i++) {
+        characters += lowerCasedCharacters[i];
+      }
+    }
+
+    if (options.addUppercase) {
+      for (let i = 0; i < upperCasedCharacters.length; i++) {
+        characters += upperCasedCharacters[i];
+      }
+    }
+
+    if (options.addNumeric) {
+      for (let i = 0; i < numericCharacters.length; i++) {
+        characters += numericCharacters[i];
+      }
+    }
+
+    if (options.addSpecial) {
+      for (let i = 0; i < specialCharacters.length; i++) {
+        characters += specialCharacters[i];
+      }
+    }
+
+    let password = '';
+    for (let i = 0; i < options.length; i++) {
+      password += getRandom(characters);
+    }
+
+    return password;
+  }
 }
+    
 
 // Get references to the #generate element
 var generateBtn = document.querySelector('#generate');
