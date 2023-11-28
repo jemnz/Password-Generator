@@ -92,15 +92,20 @@ var upperCasedCharacters = [
 function getPasswordOptions() {
   const passwordLength = prompt('Please enter the length of the password (between 8 and 128 characters):');
 
-  if (passwordLength < 8 || passwordLength > 128 || isNaN(passwordLength)){
-  alert('Please enter a valid password length between 8 and 128 characters.');
-        return getPasswordOptions();
-}
+  if (passwordLength < 8 || passwordLength > 128 || isNaN(passwordLength)) {
+    alert('Please enter a valid password length between 8 and 128 characters.');
+    return getPasswordOptions();
+  }
+
+  const Lowercase = confirm('Include lowercase characters?');
+  const Uppercase = confirm('Include uppercase characters?');
+  const Numeric = confirm('Include numeric characters?');
+  const Special = confirm('Include special characters?');
 
 
-return {
-  length: passwordLength
-};
+  return {
+    length: passwordLength
+  };
 
 }
 
